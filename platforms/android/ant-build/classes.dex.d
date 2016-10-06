@@ -1,11 +1,11 @@
 c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes.dex : \
-c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes\com\oasys\app\BuildConfig.class \
-c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes\com\oasys\app\pap.class \
-c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes\com\oasys\app\R$attr.class \
-c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes\com\oasys\app\R$drawable.class \
-c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes\com\oasys\app\R$string.class \
-c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes\com\oasys\app\R$xml.class \
-c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes\com\oasys\app\R.class \
+c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes\com\app\oasys\BuildConfig.class \
+c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes\com\app\oasys\oasys.class \
+c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes\com\app\oasys\R$attr.class \
+c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes\com\app\oasys\R$drawable.class \
+c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes\com\app\oasys\R$string.class \
+c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes\com\app\oasys\R$xml.class \
+c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes\com\app\oasys\R.class \
 c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes\com\oxes\pap\BuildConfig.class \
 c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes\com\oxes\pap\pap.class \
 c:\Users\juliano\Documents\git\oasys\platforms\android\ant-build\classes\com\oxes\pap\R$attr.class \
