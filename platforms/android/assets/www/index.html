@@ -77,7 +77,26 @@
     </head>
 
     <body>
-        <div data-role="page" id="page-index" style="background-color: #363636">
+        <div data-role="page" id="page-signin" >
+            <div role="main" class="ui-content">
+                <img src="images/oasys.png" alt="PAP" style="width: 100%">
+                <div id="ctn-err" class="bi-invisible"></div>
+                <input type="number" name="txt-documento" id="txt-documento" value=""
+                       placeholder="Documento Identitifación">
+                <input type="password" name="txt-password" id="txt-password" value=""
+                       placeholder="Clave">
+                <input type="hidden" name="txt-regId" id="txt-regId" value="">
+                <fieldset data-role="controlgroup">                
+                    <label>
+                        <input type="checkbox" name="chk-keep-signed-in" id="chk-keep-signed-in" checked="checked"> Recordar Usuario
+                    </label>
+                </fieldset>
+                <a href="#dlg-invalid-credentials" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" 
+                   class="ui-btn ui-btn-b ui-corner-all bi-top-margin-1-5">Ingresar</a>
+                <p class="bi-top-margin-1-5"><a href="#page-remember">¿Has olvidado la contraseña?</a></p>
+            </div>
+        </div>
+        <div data-role="page" id="page-index">
             <div role="main" class="ui-content">
                 <img src="images/oasys.png" alt="PAP" style="width: 100%">
                 <p class="bi-top-margin-1-5"><b>Usuario Existente</b></p>
@@ -310,24 +329,7 @@
             </div>
         </div>
 
-        <div data-role="page" id="page-signin" style="background-color: #363636" >
-            <div role="main" class="ui-content">
-                <img src="images/oasys.png" alt="PAP" style="width: 100%">
-                <h3>Iniciar Sesión</h3>
-                <div id="ctn-err" class="bi-invisible"></div>
-                <label for="txt-documento">Documento:</label>
-                <input type="number" name="txt-documento" id="txt-documento" value="">
-                <label for="txt-password">Contraseña:</label>
-                <input type="password" name="txt-password" id="txt-password" value="">
-                <input type="hidden" name="txt-regId" id="txt-regId" value="">
-                <fieldset data-role="controlgroup">                
-                    <label><input type="checkbox" name="chk-keep-signed-in" id="chk-keep-signed-in" checked="checked"> Recordarme</label>
-                </fieldset>
-                <a href="#dlg-invalid-credentials" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" 
-                   class="ui-btn ui-btn-b ui-corner-all bi-top-margin-1-5">Ingresar</a>
-                <p class="bi-top-margin-1-5"><a href="#page-remember">¿Has olvidado la contraseña?</a></p>
-            </div>
-        </div>
+
 
         <div id="divRegistrarUsuario" data-role="page" style="background-color: #363636" >
             <div data-role="header" data-position="fixed">
