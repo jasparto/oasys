@@ -1,7 +1,7 @@
-var servicio = "http://190.14.226.155:8095/paprs/webresources/";
+var servicio = "http://rs-pvapp.rhcloud.com/webresources/";
 
 var usuario = {
-    codTipoDocumento: 0, documentoIdentidad: null, nombre: null, apellido: null, correo: null, edad: 0, fechaNacimiento: null, codigo: null,
+    codTipoDocumento: 0, documentoIdentidad: null, nombre: null, apellido: null, usuario: null, correo: null, edad: 0, fechaNacimiento: null, codigo: null,
     clave: null, claveConfirmacion: null, sexo: null, direccion: null, telefono: null, telefonoCelular: null, regId: null, tUsuarioSiuDirecciones: tUsuarioSiuDirecciones
 };
 
@@ -27,7 +27,7 @@ var tUsuarioSiuDirecciones = {
 //var servicio = "http://10.1.1.185:8095/paprs/webresources/";
 //var servicio = "http://localhost:9090/webresources/";
 //var servicio = "http://localhost:8080/webresources/";
-//var servicio = "http://localhost:8091/webresources/";
+//var servicio = "http://localhost:8091/rs/webresources/";
 
 var pap = pap || {};
 pap.Settings = pap.Settings || {};
