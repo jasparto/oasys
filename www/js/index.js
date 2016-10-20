@@ -175,9 +175,9 @@ $(document).delegate("#mis_ordenes", "pageshow", function () {
     app.alistamientoController.cargarAlistamientosUsuario(usuario);
 });
 
-$(document).delegate("#pap", "pagebeforecreate", function () {
+$(document).delegate("#menu", "pagebeforecreate", function () {
     app.papController.init();
-    $("#usuario-registrado").text(pap.Session.getInstance().get().userProfileModel);
+//    $("#usuario-registrado").text(pap.Session.getInstance().get().userProfileModel);
     app.papController.$labelUsuarioRegistrado.text(pap.Session.getInstance().get().userProfileModel);
     app.papController.$linkCerrarSession.off("tap").on("tap", function () {
         app.papController.cerrarSession();
@@ -194,13 +194,13 @@ $(document).on("pagecontainerbeforechange", function (event, ui) {
         return;
 
     switch (ui.toPage.attr("id")) {
-        case "page-index":
+        case "page-signin":
             if (!ui.prevPage) {
                 // Check session.keepSignedIn and redirect to main menu.
                 var session = pap.Session.getInstance().get(),
                         today = new Date();
                 if (session && session.keepSignedIn && new Date(session.expirationDate).getTime() > today.getTime()) {
-                    ui.toPage = $("#pap");
+                    ui.toPage = $("#menu");
                 }
             }
     }

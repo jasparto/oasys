@@ -10,7 +10,7 @@ pap.PapController = function () {
 };
 
 pap.PapController.prototype.init = function () {
-    this.$autorizacionPage = $("#pap");
+    this.$autorizacionPage = $("#menu");
     this.$confirmarPage = $("#confirmar");  
     this.$divIniciarConfirmacion = $("#div-iniciar-confirmacion", this.$autorizacionPage);
     this.$labelUsuarioRegistrado = $("#label-usuario-registrado", this.$autorizacionPage);
