@@ -100,7 +100,7 @@ pap.SignInController.prototype.onSignInCommand = function () {
 //        me.$txtdocumento.addClass(invalidInputStyle);
 //        return;
 //    }
-    usuario.documentoIdentidad = emailAddress;
+    usuario.usuario = emailAddress;
     usuario.clave = password;
     usuario.regId = regId;
     $.mobile.loading("show");
