@@ -1,4 +1,4 @@
-var pap = pap || {};
+var c = c || {};
 
 // Begin boilerplate code generated with Cordova project.
 
@@ -80,15 +80,26 @@ $(document).on("mobileinit", function (event, ui) {
     $.mobile.defaultPageTransition = "slide";
 });
 
-//app.signUpController = new pap.SignUpController();
-app.signInController = new pap.SignInController();
-//app.signOutController = new pap.SignOutController();
-app.registroUsuarioController = new pap.RegistroUsuarioController();
-app.autorizacionController = new pap.AutorizacionController();
-app.usuarioController = new pap.UsuarioController();
-app.alistamientoController = new pap.AlistamientoController();
-app.papController = new pap.PapController();
-//app.bookingsController = new pap.BookingsController();
+//app.signUpController = new c.SignUpController();
+app.signInController = new c.SignInController();
+//app.signOutController = new c.SignOutController();
+app.registroUsuarioController = new c.RegistroUsuarioController();
+app.autorizacionController = new c.AutorizacionController();
+app.usuarioController = new c.UsuarioController();
+app.alistamientoController = new c.AlistamientoController();
+app.papController = new c.PapController();
+app.agendaUsuarioController = new c.AgendaUsuarioController();
+
+//app.bookingsController = new c.BookingsController();
+
+$(document).delegate("#agenda", "pagebeforecreate", function () {
+    app.agendaUsuarioController.init();
+    app.agendaUsuarioController.$fechaAgenda.datepicker({
+        onSelect: function () {
+            alert('hola');
+        }
+    });
+});
 
 $(document).delegate("#page-signin", "pagebeforecreate", function () {
     app.signInController.init();
@@ -129,7 +140,7 @@ $(document).delegate("#cerrarSesion", "pagebeforecreate", function () {
 
 $(document).delegate("#confirmar", "pagebeforecreate", function () {
     app.autorizacionController.init();
-//    var usuario = pap.Session.getInstance().get().usuario;
+//    var usuario = c.Session.getInstance().get().usuario;
 //    app.autorizacionController.cargarAutorizacionesUsuario(usuario);
 //    cargarMapa();
     app.autorizacionController.$btnConfirmar.off("tap").on("tap", function () {
@@ -140,10 +151,10 @@ $(document).delegate("#confirmar", "pagebeforecreate", function () {
 $(document).delegate("#domicilio", "pagebeforecreate", function () {
 //    app.autorizacionController.init();
     app.usuarioController.init();
-    app.usuarioController.cargarDireccionesUsuario(pap.Session.getInstance().get().usuario)
+    app.usuarioController.cargarDireccionesUsuario(c.Session.getInstance().get().usuario)
     app.usuarioController.$btnDomicilioConfirmar.off("tap").on("tap", function () {
         app.usuarioController.onConfirmarDomicilio();
-        app.usuarioController.cargarDireccionesUsuario(pap.Session.getInstance().get().usuario)
+        app.usuarioController.cargarDireccionesUsuario(c.Session.getInstance().get().usuario)
     });
 
     app.usuarioController.$departamentoEnvio.change(function () {
@@ -157,12 +168,12 @@ $(document).delegate("#domicilio", "pagebeforecreate", function () {
 });
 
 $(document).delegate("#confirmar", "pageshow", function () {
-    var usuario = pap.Session.getInstance().get().usuario;
+    var usuario = c.Session.getInstance().get().usuario;
     app.autorizacionController.cargarAutorizacionesUsuario(usuario, false);
     cargarMapa();
 });
 $(document).delegate("#domicilio", "pageshow", function () {
-    var usuario = pap.Session.getInstance().get().usuario;
+    var usuario = c.Session.getInstance().get().usuario;
     app.autorizacionController.cargarAutorizacionesUsuario(usuario, true);
 });
 
@@ -171,14 +182,14 @@ $(document).delegate("#mis_ordenes", "pagebeforecreate", function () {
 });
 
 $(document).delegate("#mis_ordenes", "pageshow", function () {
-    var usuario = pap.Session.getInstance().get().usuario;
+    var usuario = c.Session.getInstance().get().usuario;
     app.alistamientoController.cargarAlistamientosUsuario(usuario);
 });
 
-$(document).delegate("#pap", "pagebeforecreate", function () {
+$(document).delegate("#menu", "pagebeforecreate", function () {
     app.papController.init();
-    $("#usuario-registrado").text(pap.Session.getInstance().get().userProfileModel);
-    app.papController.$labelUsuarioRegistrado.text(pap.Session.getInstance().get().userProfileModel);
+//    $("#usuario-registrado").text(c.Session.getInstance().get().userProfileModel);
+    app.papController.$labelUsuarioRegistrado.text(c.Session.getInstance().get().userProfileModel);
     app.papController.$linkCerrarSession.off("tap").on("tap", function () {
         app.papController.cerrarSession();
     });
@@ -194,13 +205,13 @@ $(document).on("pagecontainerbeforechange", function (event, ui) {
         return;
 
     switch (ui.toPage.attr("id")) {
-        case "page-index":
+        case "page-signin":
             if (!ui.prevPage) {
                 // Check session.keepSignedIn and redirect to main menu.
-                var session = pap.Session.getInstance().get(),
+                var session = c.Session.getInstance().get(),
                         today = new Date();
                 if (session && session.keepSignedIn && new Date(session.expirationDate).getTime() > today.getTime()) {
-                    ui.toPage = $("#pap");
+                    ui.toPage = $("#menu");
                 }
             }
     }

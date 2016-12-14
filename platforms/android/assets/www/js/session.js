@@ -1,11 +1,11 @@
-﻿var pap = pap || {};
+var c = c || {};
 
-pap.Session = (function () {
+c.Session = (function () {
     var instance;
 
     function init() {
 
-        var sessionIdKey = "pap-session";
+        var sessionIdKey = "oasys-session";
 
         return {
             // Public methods and variables.

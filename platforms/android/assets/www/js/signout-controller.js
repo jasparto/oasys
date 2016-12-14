@@ -1,6 +1,6 @@
-var pap = pap || {};
+var c = c || {};
 
-pap.SignOutController = function () {
+c.SignOutController = function () {
 
     this.$signInPage = null;    
     this.$btnSubmit = null;
@@ -8,13 +8,13 @@ pap.SignOutController = function () {
     this.papPageId=null;
 };
 
-pap.SignOutController.prototype.init = function () {
+c.SignOutController.prototype.init = function () {
     this.$signInPage = $("#page-signin");    
     this.papPageId = "#pap";
     this.$btnSubmit = $("#btn-submit", this.papPageId);    
 };
 
-pap.SignOutController.prototype.cerrarSession = function () {
-    pap.Session.deleteInstance();
+c.SignOutController.prototype.cerrarSession = function () {
+    c.Session.deleteInstance();
     $.mobile.navigate(this.$signInPage);
 };

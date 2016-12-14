@@ -1,6 +1,6 @@
-var pap = pap || {};
+var c = c || {};
 
-pap.RegistroUsuarioController = function () {
+c.RegistroUsuarioController = function () {
     this.$divRegistrarUsuario = null;
     this.$tipoDocumentoUsuario = null;
     this.$documentoUsuario = null;
@@ -19,7 +19,7 @@ pap.RegistroUsuarioController = function () {
     this.$claveConfirmacionUsuario = null;
 };
 
-pap.RegistroUsuarioController.prototype.init = function () {
+c.RegistroUsuarioController.prototype.init = function () {
     this.$divRegistrarUsuario = $("#divRegistrarUsuario");
     this.$tipoDocumentoUsuario = $("#tipoDocumentoUsuario", this.$divRegistrarUsuario);
     this.$documentoUsuario = $("#documentoUsuario", this.$divRegistrarUsuario);
@@ -38,7 +38,7 @@ pap.RegistroUsuarioController.prototype.init = function () {
     this.$claveConfirmacionUsuario = $("#claveConfirmacionUsuario", this.$divRegistrarUsuario);
 };
 
-pap.RegistroUsuarioController.prototype.validarRegistroUsuario = function (usuario, solicitudRegistro) {
+c.RegistroUsuarioController.prototype.validarRegistroUsuario = function (usuario, solicitudRegistro) {
     var invalidInput = false, invisibleStyle = "bi-invisible",
             invalidInputStyle = "bi-invalid-input", invalidSelectStyle = "bi-invalid-select";
 

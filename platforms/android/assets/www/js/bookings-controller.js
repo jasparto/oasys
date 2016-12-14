@@ -1,43 +1,43 @@
-﻿var pap = pap || {};
+var c = c || {};
 
-pap.BookingsController = function () {
-    this.localStorageKey = "pap.bookings";
+c.BookingsController = function () {
+    this.localStorageKey = "c.bookings";
     this.$bookingsPage = null;
     this.$btnRefresh = null;
 };
 
-pap.BookingsController.prototype.init = function () {
+c.BookingsController.prototype.init = function () {
     this.$bookingsPage = $("#page-bookings");
     this.$btnRefresh = $("#btn-refresh", this.$bookingsPage);
 };
 
-pap.BookingsController.prototype.getBookingsFromLocalStorage = function () {
+c.BookingsController.prototype.getBookingsFromLocalStorage = function () {
     return window.localStorage.getItem(this.localStorageKey) || [];
 };
 
-pap.BookingsController.prototype.showBookings = function () {
+c.BookingsController.prototype.showBookings = function () {
 
     var bookings = this.getBookingsFromLocalStorage();
 
     // TODO: Build bookings DOM.
 };
 
-pap.BookingsController.prototype.getBookingsFromServer = function (successCallback, errorCallback) {
-    var session = pap.Session.getInstance().get();
+c.BookingsController.prototype.getBookingsFromServer = function (successCallback, errorCallback) {
+    var session = c.Session.getInstance().get();
 
     if (!session) {
-        return errorCallback({ err: pap.ApiMessages.SESSION_NOT_FOUND });
+        return errorCallback({ err: c.ApiMessages.SESSION_NOT_FOUND });
     }
 
     $.ajax({
         type: 'GET',
-        url: pap.Settings.bookingsUrl + "/sessionId=" + session.sessionId,
+        url: c.Settings.bookingsUrl + "/sessionId=" + session.sessionId,
         success: successCallback,
         error: errorCallback
     });
 };
 
-pap.BookingsController.prototype.onRefreshCommand = function () {
+c.BookingsController.prototype.onRefreshCommand = function () {
     
     this.getBookingsFromServer(
         function (resp) {

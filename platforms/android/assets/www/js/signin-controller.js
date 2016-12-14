@@ -1,7 +1,6 @@
-var pap = pap || {};
+var c = c || {};
 
-pap.SignInController = function () {
-
+c.SignInController = function () {
     this.$signInPage = null;
     this.bookingsPageId = null;
     this.$btnSubmit = null;
@@ -14,10 +13,10 @@ pap.SignInController = function () {
     this.$remeberPage = null;
 };
 
-pap.SignInController.prototype.init = function () {
+c.SignInController.prototype.init = function () {
     this.$signInPage = $("#page-signin");
     this.bookingsPageId = "#pap";
-    this.papPageId = "#pap";
+    this.papPageId = "#menu";
     this.$btnSubmit = $("#btn-submit", this.$signInPage);
     this.$ctnErr = $("#ctn-err", this.$signInPage);
     this.$txtdocumento = $("#txt-documento", this.$signInPage);
@@ -26,23 +25,23 @@ pap.SignInController.prototype.init = function () {
     this.$chkKeepSignedIn = $("#chk-keep-signed-in", this.$signInPage);
 };
 
-pap.SignInController.prototype.initRemember = function () {
+c.SignInController.prototype.initRemember = function () {
     this.$signInPage = $("#page-signin");
     this.$remeberPage = $("#page-remember");
     this.bookingsPageId = "#pap";
-    this.papPageId = "#pap";
+    this.papPageId = "#menu";
     this.$btnSubmit = $("#btn-submit", this.$remeberPage);
     this.$ctnErr = $("#ctn-err", this.$remeberPage);
     this.$txtdocumentoRecordar = $("#txt-documento-recordar", this.$remeberPage);
 };
 
 
-pap.SignInController.prototype.emailAddressIsValid = function (email) {
+c.SignInController.prototype.emailAddressIsValid = function (email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 };
 
-pap.SignInController.prototype.resetSignInForm = function () {
+c.SignInController.prototype.resetSignInForm = function () {
 
     var invisibleStyle = "bi-invisible",
             invalidInputStyle = "bi-invalid-input";
@@ -62,8 +61,8 @@ pap.SignInController.prototype.resetSignInForm = function () {
 //};
 
 
-pap.SignInController.prototype.onSignInCommand = function () {
-    var usuario = pap.Settings.usuario;
+c.SignInController.prototype.onSignInCommand = function () {
+    var usuario = c.Settings.usuario;
     var me = this,
             emailAddress = me.$txtdocumento.val().trim(),
             password = me.$txtPassword.val().trim(),
@@ -107,7 +106,7 @@ pap.SignInController.prototype.onSignInCommand = function () {
 
     $.ajax({
         type: 'POST',
-        url: pap.Settings.signInUrl,
+        url: c.Settings.signInUrl,
         dataType: 'json',
         contentType: 'application/json',
         data: JSON.stringify(usuario), //"email=" + emailAddress + "&password=" + password,
@@ -118,7 +117,7 @@ pap.SignInController.prototype.onSignInCommand = function () {
                 // Create session.                 
                 var today = new Date();
                 var expirationDate = new Date();
-                expirationDate.setTime(today.getTime() + pap.Settings.sessionTimeoutInMSec);
+                expirationDate.setTime(today.getTime() + c.Settings.sessionTimeoutInMSec);
 
                 usuario.codTipoDocumento = resp.codTipoDocumento;
                 usuario.documentoIdentidad = resp.documentoIdentidad;
@@ -126,7 +125,7 @@ pap.SignInController.prototype.onSignInCommand = function () {
                 usuario.apellido = resp.apellido;
                 usuario.correo = resp.correo;
 
-                pap.Session.getInstance().set({
+                c.Session.getInstance().set({
                     userProfileModel: resp.nombre + ' ' + resp.apellido,
                     sessionId: resp.correo,
                     expirationDate: expirationDate,
@@ -139,13 +138,13 @@ pap.SignInController.prototype.onSignInCommand = function () {
             } else {
                 if (resp.extras.msg) {
                     switch (resp.extras.msg) {
-                        case pap.ApiMessages.DB_ERROR:
+                        case c.ApiMessages.DB_ERROR:
                             // TODO: Use a friendlier error message below.
                             me.$ctnErr.html("<p>Ocurrio un problema y no se ha podido iniciar sesión.  Por favor intentelo en unos minutos.</p>");
                             me.$ctnErr.addClass("bi-ctn-err").slideDown();
                             break;
-                        case pap.ApiMessages.INVALID_PWD:
-                        case pap.ApiMessages.EMAIL_NOT_FOUND:
+                        case c.ApiMessages.INVALID_PWD:
+                        case c.ApiMessages.EMAIL_NOT_FOUND:
                             me.$ctnErr.html("<p>Usuario o contraseña incorrectos.  Por favor intentelo nuevamente.</p>");
                             me.$ctnErr.addClass("bi-ctn-err").slideDown();
                             me.$txtdocumento.addClass(invalidInputStyle);
@@ -185,8 +184,8 @@ pap.SignInController.prototype.onSignInCommand = function () {
     });
 };
 
-pap.SignInController.prototype.onRememberCommand = function () {
-    var usuario = pap.Settings.usuario;
+c.SignInController.prototype.onRememberCommand = function () {
+    var usuario = c.Settings.usuario;
     var me = this,
             emailAddress = me.$txtdocumentoRecordar.val().trim(),
             password = me.$txtPassword.val().trim(),
@@ -218,7 +217,7 @@ pap.SignInController.prototype.onRememberCommand = function () {
 
     $.ajax({
         type: 'POST',
-        url: pap.Settings.recordarUrl,
+        url: c.Settings.recordarUrl,
         dataType: 'json',
         contentType: 'application/json',
         data: JSON.stringify(usuario), //"email=" + emailAddress + "&password=" + password,
@@ -235,13 +234,13 @@ pap.SignInController.prototype.onRememberCommand = function () {
             } else {
                 if (resp.extras.msg) {
                     switch (resp.extras.msg) {
-                        case pap.ApiMessages.DB_ERROR:
+                        case c.ApiMessages.DB_ERROR:
                             // TODO: Use a friendlier error message below.
                             me.$ctnErr.html("<p>Ocurrio un problema y no se ha podido iniciar sesión.  Por favor intentelo en unos minutos.</p>");
                             me.$ctnErr.addClass("bi-ctn-err").slideDown();
                             break;
-                        case pap.ApiMessages.INVALID_PWD:
-                        case pap.ApiMessages.EMAIL_NOT_FOUND:
+                        case c.ApiMessages.INVALID_PWD:
+                        case c.ApiMessages.EMAIL_NOT_FOUND:
                             me.$ctnErr.html("<p>Usuario o contraseña incorrectos.  Por favor intentelo nuevamente.</p>");
                             me.$ctnErr.addClass("bi-ctn-err").slideDown();
                             me.$txtdocumentoRecordar.addClass(invalidInputStyle);
@@ -273,7 +272,7 @@ pap.SignInController.prototype.onRememberCommand = function () {
     });
 };
 
-//pap.RegistroUsuarioController = function () {
+//c.RegistroUsuarioController = function () {
 //    this.$divRegistrarUsuario = null;
 //    this.$tipoDocumentoUsuario = null;
 //    this.$documentoUsuario = null;
@@ -292,7 +291,7 @@ pap.SignInController.prototype.onRememberCommand = function () {
 //    this.$claveConfirmacionUsuario = null;
 //};
 //
-//pap.RegistroUsuarioController.prototype.init = function () {
+//c.RegistroUsuarioController.prototype.init = function () {
 //    this.$divRegistrarUsuario = $("#divRegistrarUsuario");
 //    this.$tipoDocumentoUsuario = $("#tipoDocumentoUsuario", this.$divRegistrarUsuario);
 //    this.$documentoUsuario = $("#documentoUsuario", this.$divRegistrarUsuario);
@@ -311,7 +310,7 @@ pap.SignInController.prototype.onRememberCommand = function () {
 //    this.$claveConfirmacionUsuario = $("#claveConfirmacionUsuario", this.$divRegistrarUsuario);
 //};
 //
-//pap.RegistroUsuarioController.prototype.validarRegistroUsuario = function (usuario, solicitudRegistro) {
+//c.RegistroUsuarioController.prototype.validarRegistroUsuario = function (usuario, solicitudRegistro) {
 //    var invalidInput = false, invisibleStyle = "bi-invisible",
 //            invalidInputStyle = "bi-invalid-input", invalidSelectStyle = "bi-invalid-select";
 //

@@ -1,6 +1,6 @@
-var pap = pap || {};
+var c = c || {};
 
-pap.PapController = function () {
+c.PapController = function () {
     this.$papPage = null;
     this.$confirmarPage = null;
     this.$divIniciarConfirmacion = null;
@@ -9,7 +9,7 @@ pap.PapController = function () {
     this.papPageId  = null;
 };
 
-pap.PapController.prototype.init = function () {
+c.PapController.prototype.init = function () {
     this.$autorizacionPage = $("#menu");
     this.$confirmarPage = $("#confirmar");  
     this.$divIniciarConfirmacion = $("#div-iniciar-confirmacion", this.$autorizacionPage);
@@ -18,14 +18,14 @@ pap.PapController.prototype.init = function () {
     this.papPageId = "#page-signin";
 };
 
-pap.PapController.prototype.iniciarConfirmacion = function () {
+c.PapController.prototype.iniciarConfirmacion = function () {
     console.log("se debe mover el metodo de navegación")
     //$.mobile.navigate(this.$confirmarPage);
     return;
 };
 
-pap.PapController.prototype.cerrarSession = function () {
+c.PapController.prototype.cerrarSession = function () {
     var me = this;
-    pap.Session.deleteInstance();
+    c.Session.deleteInstance();
     $.mobile.navigate(me.papPageId);
 };
