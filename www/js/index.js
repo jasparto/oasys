@@ -94,11 +94,11 @@ app.agendaUsuarioController = new c.AgendaUsuarioController();
 
 $(document).delegate("#agenda", "pagebeforecreate", function () {
     app.agendaUsuarioController.init();
-    app.agendaUsuarioController.$fechaAgenda.datepicker({
-        onSelect: function () {
-            alert('hola');
-        }
-    });
+//    app.agendaUsuarioController.$fechaAgenda.datepicker({
+//        onSelect: function () {
+//            alert('hola');
+//        }
+//    });
 });
 
 $(document).delegate("#page-signin", "pagebeforecreate", function () {
