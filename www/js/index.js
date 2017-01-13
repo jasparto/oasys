@@ -89,16 +89,41 @@ app.usuarioController = new c.UsuarioController();
 app.alistamientoController = new c.AlistamientoController();
 app.papController = new c.PapController();
 app.agendaUsuarioController = new c.AgendaUsuarioController();
+app.agendaController = new c.AgendaController();
 
 //app.bookingsController = new c.BookingsController();
 
 $(document).delegate("#agenda", "pagebeforecreate", function () {
-    app.agendaUsuarioController.init();
+    app.agendaController.init();
+    var dateNewFormat, onlyDate, onlyMonth, today = new Date();
+//    dateNewFormat = today.getFullYear() + '-' + (today.getMonth() + 1);
+    dateNewFormat = today.getFullYear();
+
+    onlyMonth = today.getMonth() + 1;
+    if (onlyMonth.toString().length == 2) {
+        dateNewFormat += '-' + onlyMonth;
+    } else {
+        dateNewFormat += '-0' + onlyMonth;
+    }
+
+    onlyDate = today.getDate();
+    if (onlyDate.toString().length == 2) {
+        dateNewFormat += '-' + onlyDate;
+    } else {
+        dateNewFormat += '-0' + onlyDate;
+    }
+
+    app.agendaController.$fechaAgenda.val(dateNewFormat);
+    app.agendaController.cargarAgendaDia(c.Session.getInstance().get().usuario, dateNewFormat);
+
 //    app.agendaUsuarioController.$fechaAgenda.datepicker({
 //        onSelect: function () {
 //            alert('hola');
 //        }
 //    });
+    app.agendaController.$btnCargarAgenda.off("tap").on("tap", function () {
+        app.agendaController.cargarAgendaDia(c.Session.getInstance().get().usuario, app.agendaController.$fechaAgenda.val());
+    });
 });
 
 $(document).delegate("#page-signin", "pagebeforecreate", function () {
