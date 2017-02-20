@@ -90,6 +90,7 @@ app.alistamientoController = new c.AlistamientoController();
 app.papController = new c.PapController();
 app.agendaUsuarioController = new c.AgendaUsuarioController();
 app.agendaController = new c.AgendaController();
+app.notaController = new c.NotaController();
 
 //app.bookingsController = new c.BookingsController();
 
@@ -123,6 +124,16 @@ $(document).delegate("#agenda", "pagebeforecreate", function () {
 //    });
     app.agendaController.$btnCargarAgenda.off("tap").on("tap", function () {
         app.agendaController.cargarAgendaDia(c.Session.getInstance().get().usuario, app.agendaController.$fechaAgenda.val());
+    });
+    app.agendaController.$agendaSalir.off("tap").on("tap", function () {
+        app.agendaController.cerrarSession();
+    });
+});
+
+$(document).delegate("#nota", "pagebeforecreate", function () {
+    app.notaController.init();
+    app.notaController.$notaSalir.off("tap").on("tap", function () {
+        app.notaController.cerrarSession();
     });
 });
 
@@ -215,7 +226,7 @@ $(document).delegate("#menu", "pagebeforecreate", function () {
     app.papController.init();
 //    $("#usuario-registrado").text(c.Session.getInstance().get().userProfileModel);
     app.papController.$labelUsuarioRegistrado.text(c.Session.getInstance().get().userProfileModel);
-    app.papController.$linkCerrarSession.off("tap").on("tap", function () {
+    app.papController.$menuSalir.off("tap").on("tap", function () {
         app.papController.cerrarSession();
     });
     app.papController.$divIniciarConfirmacion.off("tap").on("tap", function () {

@@ -3,12 +3,15 @@ c.AgendaController = function () {
     this.$agenda = null;
     this.$fechaAgenda = null;
     this.$btnCargarAgenda = null;
+    this.$agendaSalir = null;
+    this.$pageSignIn = null;
 };
 c.AgendaController.prototype.init = function () {
     this.$agenda = $("#agenda");
     this.$fechaAgenda = $("#fecha-agenda", this.$agenda);
     this.$btnCargarAgenda = $("#btn-cargar-agenda", this.$agenda);
-
+    this.$agendaSalir = $("#agenda-salir", this.$agenda);
+    this.$pageSignIn = "#page-signin";
 };
 c.AgendaController.prototype.cargarAgendaDia = function (usuario, fecha) {
     var invalidInput = false, invisibleStyle = "bi-invisible",
@@ -57,7 +60,6 @@ c.AgendaController.prototype.cargarAgendaDia = function (usuario, fecha) {
                 }
             } else {
                 html += divRole + '<div data-role="footer" data-theme="b" ><center>Tu agenda se encuentra libre</center> ' + divFin + divFin;
-
             }
             $($divAgendaUsuario).html(html);
             $($divAgendaUsuario).trigger("create");
@@ -65,4 +67,10 @@ c.AgendaController.prototype.cargarAgendaDia = function (usuario, fecha) {
     });
 
 
+};
+
+c.AgendaController.prototype.cerrarSession = function () {
+    var me = this;
+    c.Session.deleteInstance();
+    $.mobile.navigate(me.$pageSignIn);
 };
