@@ -11,7 +11,7 @@ c.SignOutController = function () {
 c.SignOutController.prototype.init = function () {
     this.$signInPage = $("#page-signin");    
     this.papPageId = "#pap";
-    this.$btnSubmit = $("#btn-submit", this.papPageId);    
+    this.$btnSubmit = $("#btn-submit", this.papPageId);
 };
 
 c.SignOutController.prototype.cerrarSession = function () {

@@ -468,6 +468,12 @@ margin-top: 5px;
     background-size: cover;
     min-height: 500px;
 }
+#nota-banner
+{
+    background: url('../img/banner-bg.jpg') no-repeat;
+    background-size: cover;
+    min-height: 500px;
+}
 .cta2 .btn-default,.cta2 .btn-default:hover,.cta2 .btn-default:focus
 {
     padding: 10px 25px;

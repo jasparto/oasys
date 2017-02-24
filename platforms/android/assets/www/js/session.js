@@ -35,7 +35,7 @@ c.Session = (function () {
             return instance;
         }
         , deleteInstance: function () {
-            var sessionIdKey = "pap-session";
+            var sessionIdKey = "oasys-session";
             window.localStorage.removeItem(sessionIdKey);
         }
     };

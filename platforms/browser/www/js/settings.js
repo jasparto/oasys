@@ -38,12 +38,14 @@ c.Settings.TYPE_POST = 'POST';
 c.Settings.TYPE_GET = 'GET';
 c.Settings.APPLICATION_JSON = 'application/json';
 c.Settings.DATA_TYPE_JSON = 'json';
+c.Settings.COD_INSTITUCION = 3;
 
 //c.Settings.signUpUrl = "http://127.0.0.1:30000/api/account/register";  //"http://192.168.1.104:30000/api/account/register"; //;
 //c.Settings.signInUrl = "http://190.14.226.155:8095/paprs/webresources/generic/post/validarUsuario";//"http://127.0.0.1:30000/api/account/logon"; //"http://192.168.1.104:30000/api/account/logon"; //
 c.Settings.signInUrl = servicio + "generic/post/validarUsuario";
 c.Settings.recordarUrl = servicio + "generic/post/recordarUsuario";
 c.Settings.autorizacionUrl = servicio + "pap/get/autorizacionesUsuario";
+c.Settings.agendaUsuarionUrl = servicio + "oasys/get/agendaUsuario/" + c.Settings.COD_INSTITUCION + "/{codDocumento}/{documentoIdentidad}/{fecha}";
 c.Settings.confirmarAutorizacionUrl = servicio + 'pap/post/autorizacionesUsuario';
 c.Settings.alistamientoUrl = servicio + "pap/get/alistamientosUsuario";
 c.Settings.bookingsUrl = servicio + "generic/post/validarUsuario";

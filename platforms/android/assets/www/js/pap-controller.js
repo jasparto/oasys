@@ -6,16 +6,18 @@ c.PapController = function () {
     this.$divIniciarConfirmacion = null;
     this.$labelUsuarioRegistrado = null;
     this.$linkCerrarSession = null;
-    this.papPageId  = null;
+    this.$menuSalir = null;
+    this.$pageSignIn  = null;
 };
 
 c.PapController.prototype.init = function () {
-    this.$autorizacionPage = $("#menu");
+    this.$menu = $("#menu");
     this.$confirmarPage = $("#confirmar");  
-    this.$divIniciarConfirmacion = $("#div-iniciar-confirmacion", this.$autorizacionPage);
-    this.$labelUsuarioRegistrado = $("#label-usuario-registrado", this.$autorizacionPage);
-    this.$linkCerrarSession = $("#div-cerrar-sesion", this.$autorizacionPage);
-    this.papPageId = "#page-signin";
+    this.$divIniciarConfirmacion = $("#div-iniciar-confirmacion", this.$menu);
+    this.$labelUsuarioRegistrado = $("#label-usuario-registrado", this.$menu);
+    this.$linkCerrarSession = $("#div-cerrar-sesion", this.$menu);
+    this.$menuSalir = $("#menu-salir", this.$menu);
+    this.$pageSignIn = "#page-signin";
 };
 
 c.PapController.prototype.iniciarConfirmacion = function () {
@@ -27,5 +29,5 @@ c.PapController.prototype.iniciarConfirmacion = function () {
 c.PapController.prototype.cerrarSession = function () {
     var me = this;
     c.Session.deleteInstance();
-    $.mobile.navigate(me.papPageId);
+    $.mobile.navigate(me.$pageSignIn);
 };
