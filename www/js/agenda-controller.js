@@ -40,6 +40,7 @@ c.AgendaController.prototype.cargarAgendaDia = function (usuario, fecha) {
     }
 
 //    var data = JSON.stringify(usuario);
+    $.mobile.loading("show");
     $.ajax({
         url: url,
         type: c.Settings.TYPE_GET,
@@ -63,6 +64,7 @@ c.AgendaController.prototype.cargarAgendaDia = function (usuario, fecha) {
             }
             $($divAgendaUsuario).html(html);
             $($divAgendaUsuario).trigger("create");
+            $.mobile.loading("hide");
         }
     });
 
