@@ -129,7 +129,8 @@ c.SignInController.prototype.onSignInCommand = function () {
                     userProfileModel: resp.nombre + ' ' + resp.apellido,
                     sessionId: resp.correo,
                     expirationDate: expirationDate,
-                    keepSignedIn: me.$chkKeepSignedIn.is(":checked"),
+//                    keepSignedIn: me.$chkKeepSignedIn.is(":checked"),
+                    keepSignedIn: me.$chkKeepSignedIn.val().match(/^(true|t|yes|y|1)$/i),
                     usuario: usuario
                 });
                 // Go to main menu.

@@ -90,15 +90,25 @@
                        placeholder="Usuario">
                 <input type="password" name="txt-password" id="txt-password" value=""
                        placeholder="Clave">
+                <p class="bi-top-margin-1-5"><a href="#page-remember">¿Olvidó su Clave?</a></p>
                 <input type="hidden" name="txt-regId" id="txt-regId" value="">
-                <fieldset data-role="controlgroup">                
-                    <label>
-                        <input type="checkbox" name="chk-keep-signed-in" id="chk-keep-signed-in" checked="checked"> Recuerdame
-                    </label>
-                </fieldset>
+                <!--                <fieldset data-role="controlgroup">                
+                                                        <label>
+                                                            <input type="checkbox" name="chk-keep-signed-in" id="chk-keep-signed-in" checked="checked"> Recuerdame
+                                    
+                                                        </label>
+                                </fieldset>-->
+
+                <br/>
+                <select name="chk-keep-signed-in" id="chk-keep-signed-in" data-role="flipswitch" data-theme="b">
+                    <option value="false">NO</option>
+                    <option value="true">SI</option>
+                </select>
+                <label for="chk-keep-signed-in">Recuerdame</label>
+
                 <a href="#dlg-invalid-credentials" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" 
                    class="ui-btn ui-btn-b ui-corner-all bi-top-margin-1-5">Ingresar</a>
-                <p class="bi-top-margin-1-5"><a href="#page-remember">Recuperar Clave</a></p>
+
             </div>
         </div>
         <div data-role="page" id="page-index">
